@@ -31,4 +31,14 @@ public class CuentaServiceImplement implements CuentaService {
         return cuentaRepository.findByNumeroCuenta(numeroCuenta);
     }
 
+    @Override
+    public void updateCuenta(CuentaModel cuentaModel, Integer idCuenta) {
+        cuentaModel.setIdCuenta(idCuenta);
+        cuentaRepository.save(cuentaModel);
+    }
+
+    @Override
+    public void deleteCuenta(Integer idCuenta) {
+       cuentaRepository.deleteById(idCuenta);
+    }
 }

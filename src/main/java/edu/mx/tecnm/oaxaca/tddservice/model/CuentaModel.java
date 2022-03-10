@@ -87,7 +87,4 @@ public class CuentaModel implements Serializable {
     public void setSaldo(Double saldo) {
         this.saldo = saldo;
     }
-    
-    
-    
 }

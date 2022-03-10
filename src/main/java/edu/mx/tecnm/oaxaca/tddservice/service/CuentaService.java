@@ -15,4 +15,8 @@ public interface CuentaService {
     public void createCuenta(CuentaModel cuenta);
     
     public CuentaModel getCuenta(String numeroCuenta);
+    
+    public void updateCuenta(CuentaModel cuentaModel,Integer idCuenta);
+    
+    public void deleteCuenta(Integer idCuenta);
 }
