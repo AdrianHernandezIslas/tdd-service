@@ -6,6 +6,7 @@
 package edu.mx.tecnm.oaxaca.tddservice.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,6 +32,7 @@ public class CuentaModel implements Serializable {
     private String primerApellidoTitular;
     private String segundoApellidoTitular;
     private Double saldo;
+    private Date fechaCreacion;
 
     public Integer getIdCuenta() {
         return idCuenta;
@@ -87,4 +89,14 @@ public class CuentaModel implements Serializable {
     public void setSaldo(Double saldo) {
         this.saldo = saldo;
     }
+
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+    
+    
 }

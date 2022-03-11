@@ -6,6 +6,7 @@
 package edu.mx.tecnm.oaxaca.tddservice.service;
 
 import edu.mx.tecnm.oaxaca.tddservice.model.CuentaModel;
+import java.util.List;
 
 /**
  *
@@ -13,6 +14,8 @@ import edu.mx.tecnm.oaxaca.tddservice.model.CuentaModel;
  */
 public interface CuentaService {
     public void createCuenta(CuentaModel cuenta);
+    
+    public List getCuentas();
     
     public CuentaModel getCuenta(String numeroCuenta);
     

@@ -39,7 +39,7 @@ public class CuentaController {
     @GetMapping("/{numeroCuenta}")
     public CustomResponse getClientes(@PathVariable String numeroCuenta){
         CustomResponse customResponse = new CustomResponse();
-        customResponse.setData(cuentaService.getCuenta(numeroCuenta));
+        customResponse.setData(cuentaService.getCuentas());
         return customResponse;
     }
     

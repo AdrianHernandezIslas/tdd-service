@@ -8,6 +8,7 @@ package edu.mx.tecnm.oaxaca.tddservice.implement.service;
 import edu.mx.tecnm.oaxaca.tddservice.model.CuentaModel;
 import edu.mx.tecnm.oaxaca.tddservice.repository.CuentaRepository;
 import edu.mx.tecnm.oaxaca.tddservice.service.CuentaService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,5 +41,10 @@ public class CuentaServiceImplement implements CuentaService {
     @Override
     public void deleteCuenta(Integer idCuenta) {
        cuentaRepository.deleteById(idCuenta);
+    }
+
+    @Override
+    public List getCuentas() {
+        return cuentaRepository.findAll();
     }
 }
