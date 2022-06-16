@@ -8,6 +8,7 @@ package edu.mx.tecnm.oaxaca.tddservice.implement.service;
 import edu.mx.tecnm.oaxaca.tddservice.model.TarjetaModel;
 import edu.mx.tecnm.oaxaca.tddservice.repository.TarjetaRepository;
 import edu.mx.tecnm.oaxaca.tddservice.service.TarjetaService;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,5 +26,14 @@ public class TarjetaServiceImplement implements TarjetaService{
     public TarjetaModel createTarjeta(TarjetaModel tarjeta) {
         return tarjetaRepository.save(tarjeta);
     }
+
+    @Override
+    public Optional<TarjetaModel> findByCardNumber(String cardNumber) {
+       TarjetaModel tarjeta  = tarjetaRepository.findByNumero(cardNumber);
+        System.out.println("tarjeta "+tarjeta);
+       return Optional.ofNullable(tarjeta);
+    }
+    
+    
     
 }

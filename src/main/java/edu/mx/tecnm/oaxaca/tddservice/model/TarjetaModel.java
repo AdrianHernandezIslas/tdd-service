@@ -32,8 +32,7 @@ public class TarjetaModel implements Serializable {
     private Integer mesVencimiento;
     private Integer anioVencimiento;
     private Integer cvv;
-    //private Integer idCuenta;
-
+    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_cuenta", nullable = false)
     private CuentaModel cuenta;
@@ -78,4 +77,13 @@ public class TarjetaModel implements Serializable {
         this.cvv = cvv;
     }
 
+    public CuentaModel getCuenta() {
+        return cuenta;
+    }
+
+    public void setCuenta(CuentaModel cuenta) {
+        this.cuenta = cuenta;
+    }
+
+    
 }

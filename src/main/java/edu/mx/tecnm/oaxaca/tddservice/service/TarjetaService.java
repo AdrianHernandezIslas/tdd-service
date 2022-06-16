@@ -6,6 +6,7 @@
 package edu.mx.tecnm.oaxaca.tddservice.service;
 
 import edu.mx.tecnm.oaxaca.tddservice.model.TarjetaModel;
+import java.util.Optional;
 
 /**
  *
@@ -13,4 +14,6 @@ import edu.mx.tecnm.oaxaca.tddservice.model.TarjetaModel;
  */
 public interface TarjetaService {
     public TarjetaModel createTarjeta(TarjetaModel tarjeta);
+    
+    public Optional<TarjetaModel> findByCardNumber(String cardNumber);
 }
