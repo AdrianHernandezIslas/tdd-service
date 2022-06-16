@@ -13,7 +13,7 @@ import java.util.List;
  * @author Adrian
  */
 public interface CuentaService {
-    public void createCuenta(CuentaModel cuenta);
+    public CuentaModel createCuenta(CuentaModel cuenta);
     
     public List getCuentas();
     

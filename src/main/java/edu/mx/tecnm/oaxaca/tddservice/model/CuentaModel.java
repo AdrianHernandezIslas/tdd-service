@@ -7,12 +7,15 @@ package edu.mx.tecnm.oaxaca.tddservice.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -32,7 +35,11 @@ public class CuentaModel implements Serializable {
     private String primerApellidoTitular;
     private String segundoApellidoTitular;
     private Double saldo;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaCreacion;
+
+    @OneToMany(mappedBy = "cuenta")
+    private Set<TarjetaModel> items;
 
     public Integer getIdCuenta() {
         return idCuenta;
@@ -97,6 +104,5 @@ public class CuentaModel implements Serializable {
     public void setFechaCreacion(Date fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
-    
-    
+
 }

@@ -6,8 +6,12 @@
 package edu.mx.tecnm.oaxaca.tddservice.implement.service;
 
 import edu.mx.tecnm.oaxaca.tddservice.model.CuentaModel;
+import edu.mx.tecnm.oaxaca.tddservice.model.TarjetaModel;
 import edu.mx.tecnm.oaxaca.tddservice.repository.CuentaRepository;
+import edu.mx.tecnm.oaxaca.tddservice.repository.TarjetaRepository;
 import edu.mx.tecnm.oaxaca.tddservice.service.CuentaService;
+import edu.mx.tecnm.oaxaca.tddservice.utils.GeneralFunction;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,10 +25,30 @@ public class CuentaServiceImplement implements CuentaService {
 
     @Autowired
     private CuentaRepository cuentaRepository;
+    
+    private TarjetaRepository tarjetaRepository;
+    
+    @Autowired
+    private GeneralFunction generalFunction;
 
     @Override
-    public void createCuenta(CuentaModel cuenta) {
-        cuentaRepository.save(cuenta);
+    public CuentaModel createCuenta(CuentaModel cuenta) {
+        cuenta.setFechaCreacion(new Date());
+        cuenta.setSaldo(generalFunction.createSald());
+        cuenta.setNumeroCuenta(generalFunction.generateNumberCardClabeAcount(8, 10));
+        cuenta.setClabe(generalFunction.generateNumberCardClabeAcount(1, 18));
+        
+        TarjetaModel tarjeta = new TarjetaModel();
+        tarjeta.setCvv(Integer.parseInt(generalFunction.generateNumberCardClabeAcount(1, 3)));
+        tarjeta.setMesVencimiento(12);
+        tarjeta.setAnioVencimiento(2022);
+        tarjeta.setNumero(generalFunction.generateNumberCardClabeAcount(4, 12));
+         
+        
+        
+        CuentaModel cuenta2 = cuentaRepository.save(cuenta);
+        
+        return cuenta2;
     }
 
     @Override
