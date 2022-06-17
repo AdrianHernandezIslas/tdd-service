@@ -3,18 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.mx.tecnm.oaxaca.tddservice.utils;
-
-
-
+package edu.mx.tecnm.oaxaca.tddservice.enums;
 
 /**
  *
  * @author Adrian
  */
-public class Pruebas {
-
-    public static void main(String[] args) {
-
-    }
+public enum TipoRespuestaParseEnum {
+    MAP, LIST, STRING
 }

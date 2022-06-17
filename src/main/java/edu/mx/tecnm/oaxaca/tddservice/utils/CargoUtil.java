@@ -51,7 +51,7 @@ public class CargoUtil {
         Double nuevoSaldoCuenta = saldoCuenta - cargo.getMonto();
         cuenta.setSaldo(nuevoSaldoCuenta);
 
-        cuentaService.createCuenta(cuenta);
+        cuentaService.updateCuenta(cuenta, cuenta.getIdCuenta());
         return createMovimiento(cargo.getMonto(), cuenta,TipoMovimientoEnum.CARGO);
 
     }
@@ -69,7 +69,7 @@ public class CargoUtil {
         Double nuevoSaldoCuenta = saldoCuenta + movimiento.getMonto();
         cuenta.setSaldo(nuevoSaldoCuenta);
 
-        cuentaService.createCuenta(cuenta);
+        cuentaService.updateCuenta(cuenta, cuenta.getIdCuenta());
         createMovimiento(movimiento.getMonto(), cuenta,TipoMovimientoEnum.ABONO);
     }
 

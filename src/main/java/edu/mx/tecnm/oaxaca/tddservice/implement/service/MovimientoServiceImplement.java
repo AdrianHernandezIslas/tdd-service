@@ -5,7 +5,6 @@
  */
 package edu.mx.tecnm.oaxaca.tddservice.implement.service;
 
-import edu.mx.tecnm.oaxaca.tddservice.enums.EstatusMovimientoEnum;
 import edu.mx.tecnm.oaxaca.tddservice.model.MovimientoModel;
 import edu.mx.tecnm.oaxaca.tddservice.repository.MovimientoRepository;
 import edu.mx.tecnm.oaxaca.tddservice.service.MovimientoService;

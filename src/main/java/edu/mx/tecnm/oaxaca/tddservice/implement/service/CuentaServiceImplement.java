@@ -6,9 +6,7 @@
 package edu.mx.tecnm.oaxaca.tddservice.implement.service;
 
 import edu.mx.tecnm.oaxaca.tddservice.model.CuentaModel;
-import edu.mx.tecnm.oaxaca.tddservice.model.TarjetaModel;
 import edu.mx.tecnm.oaxaca.tddservice.repository.CuentaRepository;
-import edu.mx.tecnm.oaxaca.tddservice.repository.TarjetaRepository;
 import edu.mx.tecnm.oaxaca.tddservice.service.CuentaService;
 import edu.mx.tecnm.oaxaca.tddservice.utils.GeneralFunction;
 import java.util.Date;

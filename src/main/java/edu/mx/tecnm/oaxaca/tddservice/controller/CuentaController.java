@@ -5,11 +5,16 @@
  */
 package edu.mx.tecnm.oaxaca.tddservice.controller;
 
+import edu.mx.tecnm.oaxaca.tddservice.authentication.Authentication;
 import edu.mx.tecnm.oaxaca.tddservice.model.CuentaModel;
 import edu.mx.tecnm.oaxaca.tddservice.model.TarjetaModel;
 import edu.mx.tecnm.oaxaca.tddservice.service.CuentaService;
 import edu.mx.tecnm.oaxaca.tddservice.service.TarjetaService;
 import edu.mx.tecnm.oaxaca.tddservice.utils.CustomResponse;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,7 +39,7 @@ public class CuentaController {
     
     @Autowired
     private TarjetaService tarjetaService;
-       
+           
     @PostMapping("/")
     public CustomResponse createCuenta(@RequestBody CuentaModel cuenta) {
         CustomResponse customResponse = new CustomResponse();
@@ -47,7 +52,7 @@ public class CuentaController {
     }
     
     @GetMapping("/{numeroCuenta}")
-    public CustomResponse getClientes(@PathVariable String numeroCuenta){
+    public CustomResponse getClientes(@PathVariable String numeroCuenta,HttpServletRequest request){
         CustomResponse customResponse = new CustomResponse();
         customResponse.setData(cuentaService.getCuentas());
         return customResponse;
