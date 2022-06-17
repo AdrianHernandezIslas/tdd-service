@@ -5,6 +5,8 @@
  */
 package edu.mx.tecnm.oaxaca.tddservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -28,6 +30,7 @@ public class CuentaModel implements Serializable {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonIgnore
     private Integer idCuenta;
     private String clabe;
     private String numeroCuenta;
@@ -35,11 +38,33 @@ public class CuentaModel implements Serializable {
     private String primerApellidoTitular;
     private String segundoApellidoTitular;
     private Double saldo;
+    
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaCreacion;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "cuenta")
-    private Set<TarjetaModel> items;
+    private Set<TarjetaModel> tarjetas;
+    
+    @JsonIgnore
+    @OneToMany(mappedBy = "cuenta")
+    private Set<MovimientoModel> movimientos;
+
+    public Set<TarjetaModel> getTarjetas() {
+        return tarjetas;
+    }
+
+    public void setTarjetas(Set<TarjetaModel> tarjetas) {
+        this.tarjetas = tarjetas;
+    }
+
+    public Set<MovimientoModel> getMovimientos() {
+        return movimientos;
+    }
+
+    public void setMovimientos(Set<MovimientoModel> movimientos) {
+        this.movimientos = movimientos;
+    }
 
     public Integer getIdCuenta() {
         return idCuenta;

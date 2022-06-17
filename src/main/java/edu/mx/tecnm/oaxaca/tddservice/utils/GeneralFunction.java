@@ -5,7 +5,6 @@
  */
 package edu.mx.tecnm.oaxaca.tddservice.utils;
 
-import java.util.Random;
 import org.springframework.stereotype.Component;
 
 /**

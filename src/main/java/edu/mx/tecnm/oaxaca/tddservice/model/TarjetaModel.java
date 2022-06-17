@@ -5,6 +5,8 @@
  */
 package edu.mx.tecnm.oaxaca.tddservice.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,12 +29,14 @@ public class TarjetaModel implements Serializable {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonIgnore
     private Integer idTarjeta;
     private String numero;
     private Integer mesVencimiento;
     private Integer anioVencimiento;
     private Integer cvv;
     
+   
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_cuenta", nullable = false)
     private CuentaModel cuenta;
@@ -85,5 +89,15 @@ public class TarjetaModel implements Serializable {
         this.cuenta = cuenta;
     }
 
-    
+    @Override
+    public boolean equals(Object cardObject) {
+        if(!(cardObject instanceof TarjetaModel)){
+            throw new ClassCastException();
+        }
+        TarjetaModel cardInput = (TarjetaModel) cardObject;
+        return cardInput.getNumero().equals(this.getNumero()) &&
+              cardInput.getCvv().equals(this.getCvv()) &&
+              cardInput.getMesVencimiento().equals(this.getMesVencimiento()) &&
+              cardInput.getAnioVencimiento().equals(this.getAnioVencimiento());
+    }
 }

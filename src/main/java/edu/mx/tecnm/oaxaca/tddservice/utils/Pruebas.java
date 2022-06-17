@@ -5,15 +5,30 @@
  */
 package edu.mx.tecnm.oaxaca.tddservice.utils;
 
+import edu.mx.tecnm.oaxaca.tddservice.dto.CargoDTO;
+import edu.mx.tecnm.oaxaca.tddservice.exceptions.CardNotFoudException;
+import edu.mx.tecnm.oaxaca.tddservice.exceptions.InsufficientFundsException;
+import edu.mx.tecnm.oaxaca.tddservice.exceptions.InvalidAmountException;
+import edu.mx.tecnm.oaxaca.tddservice.model.TarjetaModel;
+
+
 /**
  *
  * @author Adrian
  */
 public class Pruebas {
     public static void main(String[] args) {
-        GeneralFunction a = new GeneralFunction();
-        int startNumber = 4,length = 15;
+        CargoUtil cargoUtil = new CargoUtil();
         
-        System.out.println(a.generateNumberCardClabeAcount(startNumber,length));
+        TarjetaModel tarjeta = new TarjetaModel();
+        tarjeta.setNumero("");
+        
+        CargoDTO cargo = new CargoDTO();
+        try {
+            cargoUtil.procesarCargoTarjeta(cargo);
+        } catch (CardNotFoudException | InvalidAmountException | InsufficientFundsException ex) {
+            
+        }
+        
     }
 }

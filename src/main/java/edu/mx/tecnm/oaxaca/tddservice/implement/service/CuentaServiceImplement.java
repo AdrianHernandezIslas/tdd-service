@@ -26,8 +26,6 @@ public class CuentaServiceImplement implements CuentaService {
     @Autowired
     private CuentaRepository cuentaRepository;
     
-    private TarjetaRepository tarjetaRepository;
-    
     @Autowired
     private GeneralFunction generalFunction;
 
@@ -37,18 +35,7 @@ public class CuentaServiceImplement implements CuentaService {
         cuenta.setSaldo(generalFunction.createSald());
         cuenta.setNumeroCuenta(generalFunction.generateNumberCardClabeAcount(8, 10));
         cuenta.setClabe(generalFunction.generateNumberCardClabeAcount(1, 18));
-        
-        TarjetaModel tarjeta = new TarjetaModel();
-        tarjeta.setCvv(Integer.parseInt(generalFunction.generateNumberCardClabeAcount(1, 3)));
-        tarjeta.setMesVencimiento(12);
-        tarjeta.setAnioVencimiento(2022);
-        tarjeta.setNumero(generalFunction.generateNumberCardClabeAcount(4, 12));
-         
-        
-        
-        CuentaModel cuenta2 = cuentaRepository.save(cuenta);
-        
-        return cuenta2;
+        return cuentaRepository.save(cuenta);
     }
 
     @Override

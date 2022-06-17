@@ -6,7 +6,9 @@
 package edu.mx.tecnm.oaxaca.tddservice.controller;
 
 import edu.mx.tecnm.oaxaca.tddservice.model.CuentaModel;
+import edu.mx.tecnm.oaxaca.tddservice.model.TarjetaModel;
 import edu.mx.tecnm.oaxaca.tddservice.service.CuentaService;
+import edu.mx.tecnm.oaxaca.tddservice.service.TarjetaService;
 import edu.mx.tecnm.oaxaca.tddservice.utils.CustomResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,11 +31,18 @@ public class CuentaController {
     
     @Autowired
     private CuentaService cuentaService;
+    
+    @Autowired
+    private TarjetaService tarjetaService;
        
     @PostMapping("/")
     public CustomResponse createCuenta(@RequestBody CuentaModel cuenta) {
         CustomResponse customResponse = new CustomResponse();
-        cuentaService.createCuenta(cuenta);
+        CuentaModel cuentaNueva = cuentaService.createCuenta(cuenta);
+        TarjetaModel tarjeta = new TarjetaModel();
+        tarjeta.setCuenta(cuentaNueva);
+        tarjeta = tarjetaService.createTarjeta(tarjeta);
+        customResponse.setData(tarjeta);
         return customResponse;
     }
     
